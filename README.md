@@ -8,9 +8,7 @@ An interactive web-based assignment project for **Image and Video Analytics (IVA
 - FaceNet
 
 ## 🌐 Live Demo
-
-Deploy this project using **Vercel** or another static hosting platform.
-
+https://iva-computer-vision.vercel.app/
 ## ✨ Features
 
 ### 1. Template Matching
