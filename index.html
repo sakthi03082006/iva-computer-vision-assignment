@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IVA | Computer Vision & Face Recognition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="#home">IVA<span>•</span>CV</a>
+  <nav>
+    <a href="#home">Home</a><a href="#topics">Topics</a><a href="#compare">Compare</a><a href="#references">References</a>
+  </nav>
+  <button id="themeBtn" aria-label="Toggle theme">☾</button>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">IMAGE & VIDEO ANALYTICS • ASSIGNMENT</p>
+    <h1>Computer Vision &<br><span>Face Recognition</span></h1>
+    <p class="lead">Explore four important approaches used in computer vision—from classical template matching and Viola–Jones to modern deep-learning methods DeepFace and FaceNet.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#topics">Explore Topics ↓</a>
+      <a class="btn ghost" href="#compare">View Comparison</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="scan-card">
+      <div class="scan-grid"></div>
+      <div class="face">
+        <i class="eye e1"></i><i class="eye e2"></i><i class="nose"></i><i class="mouth"></i>
+      </div>
+      <div class="scan-line"></div>
+      <div class="tag">FACE DETECTED <b>98.7%</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="topics" class="section">
+  <div class="section-head"><p class="eyebrow">FOUR CORE TOPICS</p><h2>From patterns to embeddings</h2><p>Click a topic to expand its explanation.</p></div>
+  <div class="cards">
+    <article class="topic-card" data-topic="template">
+      <div class="num">01</div><div class="icon">⌕</div>
+      <h3>Template Matching</h3><p>Find a known image pattern inside a larger image.</p>
+      <button class="learn">Learn more →</button>
+    </article>
+    <article class="topic-card" data-topic="viola">
+      <div class="num">02</div><div class="icon">▦</div>
+      <h3>Viola–Jones</h3><p>A fast classical framework for real-time face detection.</p>
+      <button class="learn">Learn more →</button>
+    </article>
+    <article class="topic-card" data-topic="deepface">
+      <div class="num">03</div><div class="icon">◉</div>
+      <h3>DeepFace</h3><p>A deep neural network approach to face verification and recognition.</p>
+      <button class="learn">Learn more →</button>
+    </article>
+    <article class="topic-card" data-topic="facenet">
+      <div class="num">04</div><div class="icon">✦</div>
+      <h3>FaceNet</h3><p>Maps faces into compact embeddings using a metric-learning approach.</p>
+      <button class="learn">Learn more →</button>
+    </article>
+  </div>
+</section>
+
+<section id="detail" class="detail section">
+  <div class="detail-inner">
+    <div class="detail-title"><span id="detailNum">01</span><div><p class="eyebrow" id="detailEyebrow">CLASSICAL COMPUTER VISION</p><h2 id="detailTitle">Template Matching</h2></div></div>
+    <p class="detail-lead" id="detailLead"></p>
+    <div class="flow" id="flow"></div>
+    <div class="detail-grid">
+      <div><h3>How it works</h3><div id="how"></div></div>
+      <div><h3>Key points</h3><ul id="points"></ul></div>
+    </div>
+    <div class="chips" id="apps"></div>
+  </div>
+</section>
+
+
+<section id="lab" class="section lab">
+  <div class="section-head">
+    <p class="eyebrow">INTERACTIVE IMAGE LAB</p>
+    <h2>Upload an image and experiment</h2>
+    <p>Use your own image to see how the computer-vision pipeline behaves. Template Matching and Viola–Jones run directly in the browser.</p>
+  </div>
+
+  <div class="upload-box">
+    <label class="upload-label" for="imageInput">Choose an image</label>
+    <input id="imageInput" type="file" accept="image/*">
+    <span id="fileName">No image selected</span>
+  </div>
+
+  <div class="lab-tabs">
+    <button class="lab-tab active" data-lab="templateLab">Template Matching</button>
+    <button class="lab-tab" data-lab="violaLab">Viola–Jones</button>
+    <button class="lab-tab" data-lab="deepLab">DeepFace</button>
+    <button class="lab-tab" data-lab="faceLab">FaceNet</button>
+  </div>
+
+  <div class="lab-panel" id="templateLab">
+    <div class="lab-controls">
+      <h3>Template Matching</h3>
+      <p>Upload a second small image as the template. The browser searches for the closest matching region.</p>
+      <label class="mini-upload">Choose template <input id="templateInput" type="file" accept="image/*"></label>
+      <button class="btn primary" id="matchBtn">Find Match</button>
+      <span id="matchStatus">Waiting for images.</span>
+    </div>
+    <canvas id="matchCanvas"></canvas>
+  </div>
+
+  <div class="lab-panel hidden" id="violaLab">
+    <div class="lab-controls">
+      <h3>Viola–Jones Face Detection</h3>
+      <p>OpenCV.js loads the classic Haar frontal-face cascade and scans the uploaded image.</p>
+      <button class="btn primary" id="detectBtn">Detect Faces</button>
+      <span id="detectStatus">Waiting for an image.</span>
+    </div>
+    <canvas id="detectCanvas"></canvas>
+  </div>
+
+  <div class="lab-panel hidden" id="deepLab">
+    <div class="lab-controls">
+      <h3>DeepFace</h3>
+      <p>DeepFace is a deep-learning face-recognition system. This page prepares the uploaded image for a DeepFace-style pipeline; the original DeepFace model requires a Python/server runtime.</p>
+      <button class="btn primary" id="deepBtn">Analyze Image</button>
+      <span id="deepStatus">Upload an image first.</span>
+    </div>
+    <div class="feature-preview" id="deepPreview"></div>
+  </div>
+
+  <div class="lab-panel hidden" id="faceLab">
+    <div class="lab-controls">
+      <h3>FaceNet</h3>
+      <p>FaceNet represents a face as an embedding vector. The original FaceNet model requires a model runtime; this demo visualizes the image-to-embedding pipeline.</p>
+      <button class="btn primary" id="faceBtn">Generate Demo Embedding</button>
+      <span id="faceStatus">Upload an image first.</span>
+    </div>
+    <div class="embedding" id="embedding"></div>
+  </div>
+</section>
+
+<section id="compare" class="section compare">
+  <div class="section-head"><p class="eyebrow">AT A GLANCE</p><h2>Method comparison</h2></div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Feature</th><th>Template Matching</th><th>Viola–Jones</th><th>DeepFace</th><th>FaceNet</th></tr></thead>
+    <tbody>
+      <tr><td>Primary use</td><td>Pattern/object matching</td><td>Face detection</td><td>Face recognition</td><td>Face recognition</td></tr>
+      <tr><td>Core idea</td><td>Compare image regions</td><td>Haar features + cascade</td><td>Deep CNN representation</td><td>Face embeddings + metric learning</td></tr>
+      <tr><td>Training</td><td>Usually no</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>Typical output</td><td>Match location/score</td><td>Face bounding boxes</td><td>Identity/similarity</td><td>Embedding/distance</td></tr>
+      <tr><td>Strength</td><td>Simple & interpretable</td><td>Fast detection</td><td>High recognition capability</td><td>Compact reusable representation</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="section takeaway">
+  <div><p class="eyebrow">KEY TAKEAWAY</p><h2>Computer vision evolved from matching pixels to learning representations.</h2><p>Template Matching and Viola–Jones are important classical techniques. DeepFace and FaceNet demonstrate how deep learning can learn powerful facial representations for modern recognition systems.</p></div>
+</section>
+
+<section id="references" class="section refs">
+  <div class="section-head"><p class="eyebrow">REFERENCES</p><h2>Further reading</h2></div>
+  <ol>
+    <li>Viola, P. & Jones, M. “Rapid Object Detection using a Boosted Cascade of Simple Features,” CVPR, 2001.</li>
+    <li>Taigman, Y. et al. “DeepFace: Closing the Gap to Human-Level Performance in Face Verification,” CVPR, 2014.</li>
+    <li>Schroff, F., Kalenichenko, D. & Philbin, J. “FaceNet: A Unified Embedding for Face Recognition and Clustering,” CVPR, 2015.</li>
+    <li>OpenCV documentation — Template Matching and Cascade Classifier concepts.</li>
+  </ol>
+</section>
+</main>
+
+<footer><span>IVA Assignment</span><span>Computer Vision • Face Recognition</span></footer>
+<script async src="https://docs.opencv.org/4.x/opencv.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
